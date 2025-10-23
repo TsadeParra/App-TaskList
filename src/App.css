@@ -1,9 +1,3 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg, #043865, #216468);
@@ -16,87 +10,39 @@ body {
 .app-container {
   background: #fff;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   width: 90%;
-  max-width: 1000px;
-  text-align: center;
+  max-width: 900px;
 }
 
 h1 {
   margin-bottom: 1.5rem;
   color: #333;
+  font-weight: 600;
 }
 
-.task-input {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.task-input input {
-  flex: 1;
-  padding: 0.6rem;
-  border: 2px solid #ddd;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-.task-input button {
-  background: #4facfe;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.task-input button:hover {
-  background: #00f2fe;
-}
-
-.task-input select,
-.filter-section select {
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 2px solid #ddd;
-  font-size: 0.9rem;
-}
-
-.filter-section {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.category-tag {
-  display: inline-block;
-  margin-left: 0.5rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  background: #4facfe;
-  color: white;
-}
-
+/* --- Lista --- */
 ul {
   list-style: none;
-  margin-bottom: 1rem;
-  text-align: left;
+  padding: 0;
 }
 
 li {
-  background: #f7f7f7;
-  margin-bottom: 0.5rem;
-  padding: 0.6rem;
-  border-radius: 6px;
+  background: #f8f9fa;
+  margin-bottom: 0.75rem;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+li:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
 }
 
 li.completed {
@@ -105,24 +51,50 @@ li.completed {
   background: #e0e0e0;
 }
 
-.task-stats {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  color: #555;
+/* --- Viñeta de color --- */
+.task-bullet {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-right: 10px;
+  flex-shrink: 0;
 }
 
-.delete-btn {
-  background: #ff4d4d;
-  border: none;
-  color: white;
-  border-radius: 6px;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
+/* --- Colores por categoría --- */
+.bullet-General { background: #4facfe; }
+.bullet-Escuela { background: #ffc107; }
+.bullet-Trabajo { background: #20c997; }
+.bullet-Actividades { background: #fd7e14; }
+.bullet-Comida { background: #dc3545; }
+.bullet-Ejercicio { background: #0d6efd; }
+.bullet-Otros { background: #6f42c1; }
+
+/* --- Etiquetas de categoría --- */
+.category-tag {
   font-size: 0.8rem;
-  transition: background 0.3s;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  color: white;
+  font-weight: 500;
+}
+
+.General { background: #4facfe; }
+.Escuela { background: #ffc107; }
+.Trabajo { background: #20c997; }
+.Actividades { background: #fd7e14; }
+.Comida { background: #dc3545; }
+.Ejercicio { background: #0d6efd; }
+.Otros { background: #6f42c1; }
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #dc3545;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
 .delete-btn:hover {
-  background: #e60000;
+  color: #a71d2a;
 }
