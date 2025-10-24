@@ -1,3 +1,4 @@
+/* FUENTE Y FONDO GENERAL */
 body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg, #043865, #216468);
@@ -5,24 +6,29 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* CONTENEDOR PRINCIPAL */
 .app-container {
   background: #fff;
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  width: 90%;
+  width: 95%;
   max-width: 900px;
+  margin: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* TITULO */
 h1 {
   margin-bottom: 1.5rem;
   color: #333;
   font-weight: 600;
 }
 
-/* --- Lista --- */
+/* LISTA DE TAREAS */
 ul {
   list-style: none;
   padding: 0;
@@ -36,7 +42,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: all 0.2s ease-in-out;
+  transition: transform 0.2s ease, background-color 0.2s ease;
   cursor: pointer;
 }
 
@@ -51,7 +57,7 @@ li.completed {
   background: #e0e0e0;
 }
 
-/* --- Viñeta de color --- */
+/* VIÑETA DE COLOR */
 .task-bullet {
   width: 14px;
   height: 14px;
@@ -60,7 +66,7 @@ li.completed {
   flex-shrink: 0;
 }
 
-/* --- Colores por categoría --- */
+/* COLORES POR CATEGORÍA */
 .bullet-General { background: #4facfe; }
 .bullet-Escuela { background: #ffc107; }
 .bullet-Trabajo { background: #20c997; }
@@ -69,7 +75,7 @@ li.completed {
 .bullet-Ejercicio { background: #0d6efd; }
 .bullet-Otros { background: #6f42c1; }
 
-/* --- Etiquetas de categoría --- */
+/* ETIQUETAS DE CATEGORÍA */
 .category-tag {
   font-size: 0.8rem;
   border-radius: 6px;
@@ -86,15 +92,165 @@ li.completed {
 .Ejercicio { background: #0d6efd; }
 .Otros { background: #6f42c1; }
 
+/* BOTÓN ELIMINAR */
 .delete-btn {
   background: transparent;
   border: none;
   color: #dc3545;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .delete-btn:hover {
   color: #a71d2a;
+  transform: scale(1.1);
+}
+
+.delete-btn:focus {
+  outline: 2px solid #4facfe;
+  outline-offset: 2px;
+}
+
+/* MENSAJE PERSONALIZADO */
+.mensaje-personalizado {
+  min-height: 40px;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mensaje-personalizado.visible {
+  opacity: 1;
+}
+
+/* MODO OSCURO */
+body.dark {
+  background: linear-gradient(135deg, #121212, #1f1f1f) !important;
+  color: #e0e0e0;
+}
+
+body.dark .app-container {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark li {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+}
+
+body.dark li.completed {
+  background-color: #444;
+  color: #aaa;
+}
+
+body.dark li:hover {
+  background-color: #3a3a3a;
+}
+
+body.dark input,
+body.dark select,
+body.dark textarea,
+body.dark button {
+  background-color: #333;
+  color: #f1f1f1;
+  border-color: #555;
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+  color: #ccc;
+}
+
+body.dark .btn-primary {
+  background-color: #0066cc;
+  border-color: #005bb5;
+}
+
+body.dark .filtroNegro {
+  background-color: #333;
+  color: #f1f1f1;
+  border-color: #555;
+}
+
+/* FECHA Y HORA */
+.fecha-hora {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #4facfe, #216468);
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+body.dark .fecha-hora {
+  background: linear-gradient(135deg, #1a1a1a, #333);
+  color: #f1f1f1;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+  .task-input {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .task-input input,
+  .task-input select,
+  .task-input button {
+    width: 100%;
+  }
+
+  .filter-section {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .task-stats {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1000px) {
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* BARRA DE PROGRESO */
+.barra-progreso-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.barra-progreso {
+  height: 20px;
+  background: linear-gradient(90deg, #ff4d4d, #ff9999);
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.barra-progreso-texto {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 20px;
 }
